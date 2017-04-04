@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Watchface server-thing!</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class=" col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                        <h3 class="panel-title">List </h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                         <table class=table>
+                             <thead> <tr> <th>#</th> <th>Name</th> <th>Picture</th> <th>Action</th> </tr> </thead>
+                             
+                             <tbody id="tablica"> 
+                             </tbody> 
+
+                        </table>
+                        </table>
+                        
+                </div>
+            </div>
+        </div>
+		<div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                        <h3 class="panel-title">Adding new </h3>
+                </div>
+                <div class="panel-body">
+
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        Choose files: <br>
+                        .png
+                            <input type="file" name="filepng" id="fileToUpload">
+                        .bin
+                            <input type="file" name="filebin" id="fileToUpload"><br>
+                        <input type="submit" value="Upload Files" name="submit">
+                    </form>
+                    
+                </div>
+            </div>
+		</div>
+	</div>
+	
+</div>
+
+<script>
+    URL = "YOUR DOMAIN /"
+    var i=1;
+    console.log("run");
+    $.getJSON(URL+'watch.php', function (data) {
+        console.log(data.recordCount);
+        while (i<=data.recordCount){
+            $("#tablica").append(
+                '<tr> <th scope=row>'+i+'</th> <td>'+data.dataList[i-1]["name"]+'</td> <td><img class="media-object" src="'+data.dataList[i-1]["watchfaceImageURL"]+'"></td> <td><button type="button" class="btn btn-danger" onclick="usunac(\''+data.dataList[i-1]["name"]+'.png\', \'' +data.dataList[i-1]["name"]+'_bin.bin\') " >Remove</button></td> </tr>'
+            );
+            i+=1;
+        }});
+    function usunac(name1, name2){
+        console.log(name1);
+        console.log(name2);
+        if (confirm('Are you sure of deleting ti?')) {
+            window.location.href = URL+"delete.php?file1="+name1+"&file2="+name2;
+        } else {
+            return false;
+        }
+
+
+    }
+
+
+</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
