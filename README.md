@@ -5,7 +5,7 @@ Simple CMS-like server for own watchfaces for Goclever Chronos Eko and Weloop To
 
 ## Usage
 
-Put all files on WWW server, change $URL in watch.php to correct domain and create "uploads folder"
+Put all files on WWW server, change $URL in watch.php and index.html to correct domain and create "uploads" folder
 
 ### Prerequisites
 
