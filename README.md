@@ -22,9 +22,9 @@ java -jar apktool d [name of apk]
 ```
 * Modifying address of server  
 ```
-on Chronos app in [name of apk]\smali\com\yf\weloop\activities\SendDialActivity$13.smali
+on Chronos app (in weloop probably in similar place) in [name of apk]\smali\com\yf\weloop\activities\SendDialActivity$13.smali
 in 107 line
-in weloop probably in similar place 
+to "http://[domain]/watch.php"
 ```
 * Packing app 
 ```
