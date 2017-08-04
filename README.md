@@ -10,7 +10,7 @@ Put all files on WWW server, change $URL in watch.php and index.html to correct 
 ### Prerequisites
 
 ```
-Any web server
+Any web server with PHP 
 ```
 
 
